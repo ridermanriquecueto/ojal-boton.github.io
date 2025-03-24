@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicio Botón y Ojal</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> 
-    <!-- Usando el CDN -->
+    <!-- Usando el CDN para particles.js -->
 </head>
-<script src="particles-config.js"></script>
+
 
 
 <body>
     <!-- Fondo dinámico con partículas -->
     <div id="particles-js"></div>
 
-
+  
     <div class="container">
         <div id="vista-principal" class="vista-activa">
             <div class="app-container">
@@ -314,6 +317,8 @@
     });
 </script>
 
-<script src="script.js"></script>
+<script src="particles-config.js"></script>
+<script src="script.js" defer></script>
+
 </body>
 </html>

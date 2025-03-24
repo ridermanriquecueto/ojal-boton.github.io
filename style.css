@@ -36,6 +36,15 @@ body, html {
   z-index: 1;
   flex-direction: column; /* Los elementos se apilan verticalmente */
 }
+/* Contenedor de los botones */
+.button-container {
+  display: flex;              /* Utiliza Flexbox */
+  flex-direction: column;     /* Los botones se colocan en una columna */
+  align-items: center;        /* Centra los botones horizontalmente */
+  justify-content: center;    /* Centra los botones verticalmente */
+  gap: 10px;                  /* Espacio entre los botones */
+}
+
 
 /* Menú y botones */
 .phone-button {
@@ -133,7 +142,59 @@ input:focus, select:focus, button:focus {
   z-index: -1; /* Asegurarse de que el fondo de la imagen quede detrás del contenido */
 }
 
-/* Estilos para los resultados de cotización */
+/* Ajustes para los campos de formulario */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 15px; /* Separación más amplia entre campos */
+  font-size: 14px;
+  background-color: #dedfe7;
+  border: 1px solid #4e73df;
+  color: #030303;
+  border-radius: 6px;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border: 2px solid #2c3e50;
+  background-color: #f8f3f3;
+}
+
+/* Estilo de los botones */
+button {
+  padding: 12px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: translateY(-5px);
+}
+/* Diseño de los campos de formulario (alineados verticalmente) */
+#vista-cotizacion input, 
+#vista-calendario input,
+#vista-cotizacion select, 
+#vista-calendario select, 
+#vista-cotizacion textarea, 
+#vista-calendario textarea {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Estilo para los títulos de las vistas */
+#vista-cotizacion h2, #vista-calendario h2 {
+  color: #e21f1f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* Estilo para el botón con id "generarCotizacion" */
 #generarCotizacion {
   padding: 12px 16px;
@@ -402,49 +463,59 @@ video {
 
 /* Media Queries para celulares */
 @media (max-width: 768px) {
+  /* Asegúrate de que el contenedor esté configurado como flex */
   .container {
-    flex-direction: column;
+    display: flex; /* Asegúrate de que el contenedor sea un flexbox */
+    flex-direction: column; /* Apilar los elementos */
     padding: 20px;
   }
 
+  /* Ajustar las vistas para que ocupen el 100% del ancho disponible */
   #vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
     width: 100%;
-    max-width: 100%;
     margin-bottom: 20px;
   }
 
+  /* Ajustar el botón de teléfono para que se ajuste bien */
   .phone-button {
-    max-width: 100%;
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
     margin-bottom: 10px;
   }
 }
 
 @media (max-width: 480px) {
+  /* Reducir el tamaño de fuente en pantallas más pequeñas */
   body, html {
-    font-size: 14px;
+    font-size: 14px; /* Ajuste del tamaño de fuente */
   }
 
+  /* Ajustar padding en vistas */
   #vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
     padding: 15px;
   }
 
+  /* Ajustar estilo del botón del teléfono */
   .phone-button {
     padding: 10px;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Hacer el texto más pequeño */
   }
 
+  /* Ajustar el tamaño del resultado de cotización */
   #cotizacionResult {
     font-size: 16px;
   }
 
+  /* Ajustar vista de "más" para que ocupe todo el ancho */
   #vista-mas {
-    max-width: 100%;
+    width: 100%; /* Asegurarse de que ocupe todo el espacio disponible */
   }
 
+  /* Ajustar padding en el contenedor principal */
   .container {
     padding: 10px;
   }
 
+  /* Ajuste adicional para el botón */
   .phone-button {
     margin-bottom: 15px;
   }

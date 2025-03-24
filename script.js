@@ -1,3 +1,13 @@
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("particles-js")) { // Reemplaza con el ID o clase correcta
+        particlesJS("particles-js", {
+            // Configuración de particles.js
+        });
+    }
+});
+
 // Función para mostrar las vistas
 function mostrarVista(vista) {
     const vistas = document.querySelectorAll('.vista');
@@ -83,6 +93,7 @@ function generarCotizacion() {
             resultadoDiv.style.color = "red";
             return;
     }
+    window.generarCotizacion = generarCotizacion; // Asegura que sea accesible desde el HTML
 
     // Mostrar el resultado de la cotización en el DOM
     resultadoDiv.textContent = `✅ El precio estimado es $${precioFinal.toFixed(2)}`;
@@ -171,3 +182,13 @@ function limpiarCalendario() {
     document.getElementById('cantidadBotones').value = '';
     document.getElementById('entregaUrgente').checked = false;
 }
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8
+    });
+}
+
+// Asegúrate de que la función está en el `window`
+window.initMap = initMap;
