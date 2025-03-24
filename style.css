@@ -1,0 +1,451 @@
+/* Estilos generales */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #1f1c1c;
+  color: #e1e1e1;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Fondo dinámico con partículas */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-top: 20%;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 15px;
+  z-index: 1;
+  flex-direction: column; /* Los elementos se apilan verticalmente */
+}
+
+/* Menú y botones */
+.phone-button {
+  background-color: #4e73df;
+  color: #f1f1f1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 250px;
+  margin: 10px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.phone-button:hover {
+  background-color: #4e73df;
+  transform: translateY(-5px);
+}
+
+/* Vistas modales */
+.vista {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.vista-activa {
+  display: flex;
+}
+
+/* Cerrar ventana (X) */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #161616;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* Estilos para los formularios */
+input, select, button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 2px solid #4e73df;
+  background-color: #f3eeee;
+  color: #080808;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 10px;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, select:focus, button:focus {
+  border: 2px solid #2c3e50;
+  background-color: #f8f3f3;
+}
+
+/* Estilo para los formularios con fondo de imagen */
+#vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
+  padding: 20px;
+  background-color: #072e9c; /* Fondo de color base */
+  background-image: url('img/celus.png'); /* Imagen de fondo */
+  background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+  background-position: center; /* Centrar la imagen */
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #f8f3f3; /* Color de texto en blanco para que sea legible sobre el fondo */
+  position: relative;
+}
+
+/* Aplicamos el efecto de opacidad al fondo */
+#vista-cotizacion::before, #vista-calendario::before, #vista-ubicacion::before, #vista-whatsapp::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 3, 3, 0.7); /* Fondo más opaco (70%) */
+  z-index: -1; /* Asegurarse de que el fondo de la imagen quede detrás del contenido */
+}
+
+/* Estilos para los resultados de cotización */
+/* Estilo para el botón con id "generarCotizacion" */
+#generarCotizacion {
+  padding: 12px 16px;
+  background-color: #28a745; /* Fondo verde */
+  color: white; /* Texto blanco */
+  font-weight: bold; /* Letra en negrita */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+}
+
+#generarCotizacion:hover {
+  background-color: #218838; /* Verde más oscuro al pasar el mouse */
+  font-weight: bold;
+  color: red;
+}
+#cotizacionResult {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f3f3;
+  color: #072e9c;
+  border-radius: 5px;
+}
+
+
+
+/* Estilo para el formulario de ubicación */
+#vista-ubicacion {
+  padding: 20px;
+  background-color: #072e9c;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #f8f3f3;
+}
+
+
+#vista-ubicacion h2 {
+  color: #e21f1f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#vista-ubicacion label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #f8f3f3;
+}
+
+#vista-ubicacion input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  background-color: #dedfe7;
+  border: 1px solid #4e73df;
+  color: #030303;
+  border-radius: 5px;
+}
+
+/* Estilo para el botón "Cómo llegar" */
+#vista-ubicacion button {
+  padding: 12px 16px;
+  background-color: #28a745; /* Fondo verde */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  z-index: 1; /* Aseguramos que esté por encima del fondo opaco */
+}
+
+#vista-ubicacion button:hover {
+  background-color: #218838; /* Verde más oscuro cuando se pasa el ratón */
+}
+
+/* Fondo opaco detrás del formulario */
+#vista-ubicacion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro y opaco */
+  z-index: -1; /* Para que no tape el contenido */
+}
+
+/* Estilos para el formulario de WhatsApp */
+#vista-whatsapp {
+  padding: 20px;
+  background-color: #072e9c;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#vista-whatsapp h2 {
+  color: #f8f3f3;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#vista-whatsapp label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #f8f3f3;
+}
+
+#vista-whatsapp input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  background-color: #dedfe7;
+  border: 1px solid #4e73df;
+  color: #030303;
+  border-radius: 5px;
+}
+
+#vista-whatsapp button {
+  padding: 12px 16px;
+  background-color: #185a08;
+  color: rgb(240, 229, 229);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+#vista-whatsapp button:hover {
+  background-color: #0056b3;
+}
+
+/* Efecto de transición suave para mostrar y ocultar elementos */
+.vista {
+  transition: opacity 0.5s ease;
+}
+
+.vista-activa {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vista-inactiva {
+  opacity: 5;
+  visibility: hidden;
+}
+
+/* Estilo para las vistas con imagen de fondo */
+#vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+/* Estilo para la ventana modal "Más sobre nuestro trabajo" */
+#vista-mas {
+  padding: 20px;
+  background-color: #072e9c;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto;
+  text-align: center;
+}
+
+#vista-mas h2 {
+  color: #f8f3f3;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#vista-mas h3 {
+  color: #f8f3f3;
+  font-size: 1.4rem;
+  margin-top: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #f8f3f3;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* Estilos para la galería de imágenes */
+.image-gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.gallery-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para el contenedor de video */
+.video-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top 40%;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para la galería de videos */
+.video-gallery {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Media Queries para celulares */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  #vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .phone-button {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body, html {
+    font-size: 14px;
+  }
+
+  #vista-cotizacion, #vista-calendario, #vista-ubicacion, #vista-whatsapp {
+    padding: 15px;
+  }
+
+  .phone-button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  #cotizacionResult {
+    font-size: 16px;
+  }
+
+  #vista-mas {
+    max-width: 100%;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .phone-button {
+    margin-bottom: 15px;
+  }
+}
