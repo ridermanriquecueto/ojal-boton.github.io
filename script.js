@@ -113,82 +113,99 @@ function limpiarCotizacion() {
     document.getElementById('tipoTrabajo').value = 'ambos-comun';
 }
 
-
-
 function calcularFechaEntrega() {
+    // Obtener valores del formulario
     const fechaRecepcion = document.getElementById('fechaRecepcion').value;
-    const cantidadPrendas = parseInt(document.getElementById('cantidadPrendas').value);
-    const cantidadBotones = parseInt(document.getElementById('cantidadBotones').value);
+    const cantidadBotonesOjales = parseInt(document.getElementById('cantidadBotones').value);
     const entregaUrgente = document.getElementById('entregaUrgente').checked;
 
-    // Verificar que los datos sean válidos
-    if (!fechaRecepcion || isNaN(cantidadPrendas) || cantidadPrendas <= 0 || isNaN(cantidadBotones) || cantidadBotones <= 0) {
-        document.getElementById('fechaEntrega').textContent = "Por favor, ingrese una fecha válida y cantidades correctas.";
+    // Validaciones básicas
+    if (!fechaRecepcion || isNaN(cantidadBotonesOjales) || cantidadBotonesOjales <= 0) {
+        document.getElementById('fechaEntrega').textContent = "⚠️ Ingrese una fecha válida y cantidades correctas.";
+        document.getElementById('costoAdicional').textContent = "";
         return;
     }
 
+    // Configuración de producción
     let fechaEntrega = new Date(fechaRecepcion);
-    let diasExtra = 0;
-    let costoAdicional = 0;
+    const capacidadDiaria = 1600;  // Producción máxima diaria
+    let diasNecesarios = Math.ceil(cantidadBotonesOjales / capacidadDiaria);
 
-    const capacidadProduccion = 1600; // Capacidad de producción diaria de botones y ojales
+    // La entrega **siempre** inicia al día siguiente
+    fechaEntrega.setDate(fechaEntrega.getDate() + 1 + diasNecesarios - 1);
 
-    // Calcular la cantidad de días extra según la cantidad de botones y ojales
-    if (cantidadBotones <= capacidadProduccion) {
-        // Si la cantidad de botones y ojales es menor o igual a la capacidad diaria
-        diasExtra = 1; // La entrega es al día siguiente
-    } else {
-        // Si se superan los 1600 botones y ojales, calculamos los días necesarios
-        let diasNecesarios = Math.ceil(cantidadBotones / capacidadProduccion); // Cuántos días se necesitan
-        diasExtra = diasNecesarios;
-    }
-
-    // Si es urgente, se hace un ajuste en la entrega
+    // Formatear fecha
+    let mensajeEntrega = `📌 Fecha estimada de entrega: ${fechaEntrega.toLocaleDateString('es-ES')}`;
+    
+    // Calcular costo adicional si es urgente
+    let mensajeCosto = "";
     if (entregaUrgente) {
-        if (cantidadBotones <= capacidadProduccion) {
-            // Si es urgente y la cantidad es menor a la capacidad, se entrega el mismo día
-            diasExtra = 0;
-            costoAdicional = 0.5; // 50% adicional
-        } else {
-            // Si es urgente y la cantidad excede la capacidad, la entrega se realiza al siguiente día
-            diasExtra = 1;
-            costoAdicional = 0.5; // 50% adicional
-        }
+        mensajeCosto = `⚡ Entrega urgente con 50% de costo adicional.`;
     }
 
-    // Sumamos los días extra a la fecha de recepción
-    fechaEntrega.setDate(fechaEntrega.getDate() + diasExtra);
-
-    // Formateamos la fecha de entrega
-    const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
-    const fechaCalculada = fechaEntrega.toLocaleDateString('es-ES', opcionesFecha);
-
-    // Mostrar la fecha calculada
-    document.getElementById('fechaEntrega').textContent = `Fecha estimada de entrega: ${fechaCalculada}`;
-
-    // Si es urgente, mostrar el precio adicional
-    if (costoAdicional > 0) {
-        document.getElementById('fechaEntrega').textContent += ` (Entrega urgente con un 50% adicional al costo normal)`;
-    }
-
-    // Limpiar el formulario
-    limpiarCalendario();
+    // Mostrar resultados en pantalla
+    document.getElementById('fechaEntrega').textContent = mensajeEntrega;
+    document.getElementById('costoAdicional').textContent = mensajeCosto;
 }
 
-// Función para limpiar el formulario
+// Función para limpiar el formulario (solo cuando se necesite)
 function limpiarCalendario() {
     document.getElementById('fechaRecepcion').value = '';
     document.getElementById('cantidadPrendas').value = '';
     document.getElementById('cantidadBotones').value = '';
     document.getElementById('entregaUrgente').checked = false;
+    
+    // Limpiar mensajes de resultado
+    document.getElementById('fechaEntrega').textContent = "";
+    document.getElementById('costoAdicional').textContent = "";
 }
 
+
+
 function initMap() {
+    var location = { lat: -34.397, lng: 150.644 }; // Reemplaza con la ubicación real
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8
+        zoom: 8,
+        center: location
+    });
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
     });
 }
 
-// Asegúrate de que la función está en el `window`
-window.initMap = initMap;
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("particles-js")) { 
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 50
+                },
+                color: {
+                    value: "#000000"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5
+                },
+                size: {
+                    value: 3
+                },
+                move: {
+                    speed: 1
+                }
+            },
+            interactivity: {
+                events: {
+                    onHover: {
+                        enable: true,
+                        mode: "repulse"
+                    }
+                }
+            }
+        });
+    }
+});

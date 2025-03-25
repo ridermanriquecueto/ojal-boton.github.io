@@ -214,13 +214,13 @@ button:hover {
   color: red;
 }
 #cotizacionResult {
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 0px;
+  padding: 20px;
   background-color: #f8f3f3;
   color: #072e9c;
   border-radius: 5px;
+  max-width: 210px;
 }
-
 
 
 /* Estilo para el formulario de ubicación */
@@ -231,20 +231,46 @@ button:hover {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  color: #f8f3f3;
+  color: #47da2a;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out; /* Animación de entrada */
 }
 
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
+/* Título con animación de parpadeo */
 #vista-ubicacion h2 {
   color: #e21f1f;
   text-align: center;
+  font-size: 24px; /* Aumentamos el tamaño */
+  font-weight: bold;
   margin-bottom: 20px;
+  animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.7;
+  }
 }
 
 #vista-ubicacion label {
   display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
+  margin-bottom: 8px;
+  font-size: 16px; /* Más grande */
   font-weight: bold;
   color: #f8f3f3;
 }
@@ -253,29 +279,34 @@ button:hover {
   width: 100%;
   padding: 12px 16px;
   margin-bottom: 15px;
-  font-size: 14px;
-  background-color: #dedfe7;
+  font-size: 16px; /* Aumentamos tamaño */
+  background-color: #001be9;
   border: 1px solid #4e73df;
-  color: #030303;
+  color: #ffffff;
   border-radius: 5px;
 }
 
 /* Estilo para el botón "Cómo llegar" */
-#vista-ubicacion button {
+/* Estilo para el botón "Cómo Llegar" */
+.btn-como-llegar {
+  display: inline-block;
   padding: 12px 16px;
-  background-color: #28a745; /* Fondo verde */
+  background-color: #1d9b38; /* Verde WhatsApp */
   color: white; /* Texto blanco */
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
   font-size: 16px;
-  z-index: 1; /* Aseguramos que esté por encima del fondo opaco */
+  font-weight: bold;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
 }
 
-#vista-ubicacion button:hover {
-  background-color: #218838; /* Verde más oscuro cuando se pasa el ratón */
+.btn-como-llegar:hover {
+  background-color: #1EBE5D; /* Verde más oscuro */
 }
+
 
 /* Fondo opaco detrás del formulario */
 #vista-ubicacion::before {
@@ -286,13 +317,14 @@ button:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7); /* Fondo oscuro y opaco */
-  z-index: -1; /* Para que no tape el contenido */
+  z-index: -1;
 }
+
 
 /* Estilos para el formulario de WhatsApp */
 #vista-whatsapp {
   padding: 20px;
-  background-color: #072e9c;
+  background-color: #274aaa;
   border-radius: 8px;
   width: 100%;
   max-width: 400px;
@@ -300,7 +332,7 @@ button:hover {
 }
 
 #vista-whatsapp h2 {
-  color: #f8f3f3;
+  color: #f00b0b;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -326,7 +358,7 @@ button:hover {
 
 #vista-whatsapp button {
   padding: 12px 16px;
-  background-color: #185a08;
+  background-color: #28a745;
   color: rgb(240, 229, 229);
   border: none;
   border-radius: 5px;

@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="style.css">
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> 
+    
+    <!-- Script para tsparticles desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.34.0/tsparticles.min.js"></script>
+
     <!-- Usando el CDN para particles.js -->
 </head>
-
-
 
 <body>
     <!-- Fondo dinámico con partículas -->
     <div id="particles-js"></div>
 
-  
     <div class="container">
         <div id="vista-principal" class="vista-activa">
             <div class="app-container">
@@ -49,7 +50,6 @@
             </div>
         </div>
 
-        <!-- Vistas modales -->
         <!-- Vista WhatsApp -->
         <div id="vista-whatsapp" class="vista">
             <div class="modal-content">
@@ -65,40 +65,33 @@
         </div>
 
         <!-- Vista Ubicación -->
-<div id="vista-ubicacion" class="vista">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarVentana('ubicacion')">&times;</span>
-        <h2>Ubicación</h2>
+        <div id="vista-ubicacion" class="vista">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarVentana('ubicacion')">&times;</span>
+                <h2>Ubicación</h2>
 
-        <!-- Frases motivadoras para incentivar a la gente -->
-        <p class="frase-motivadora">
-            ¿Necesitás un botón o un ojal? ¡No busques más! Vení a nuestro taller que lo hacemos con dedicación y rapidez.
-        </p>
-        <p class="frase-motivadora">
-            ¡Trae tus prendas y las dejamos como nuevas! Camisas, pantalones, jeans... ¡Lo que necesites, lo tenemos!
-        </p>
-        <p class="frase-motivadora">
-            ¡Con café y buena onda, te atendemos siempre con una sonrisa! No te lo podés perder. 😊
-        </p>
-       
-        <p class="frase-motivadora">
-            Rápido, responsable y con la mejor calidad. ¡Te esperamos para darle un toque único a tus prendas!
-        </p>
+                <!-- Frases motivadoras para incentivar a la gente -->
+                <p class="frase-motivadora">
+                    ¿Necesitás un botón o un ojal? ¡No busques más! Vení a nuestro taller que lo hacemos con dedicación y rapidez.
+                </p>
+                <p class="frase-motivadora">
+                    ¡Trae tus prendas y las dejamos como nuevas! Camisas, pantalones, jeans... ¡Lo que necesites, lo tenemos!
+                </p>
+                <p class="frase-motivadora">
+                    ¡Con café y buena onda, te atendemos siempre con una sonrisa! No te lo podés perder. 😊
+                </p>
+                <p class="frase-motivadora">
+                    Rápido, responsable y con la mejor calidad. ¡Te esperamos para darle un toque único a tus prendas!
+                </p>
 
-        <!-- Botón "Cómo Llegar" -->
-        <a href="https://www.google.com/maps/place/34%C2%B055'12.0%22S+58%C2%B000'10.0%22W" target="_blank" class="btn-como-llegar">
-            Cómo Llegar
-        </a>
+                <!-- Botón "Cómo Llegar" -->
+                <a href="https://www.google.com/maps/place/34%C2%B055'12.0%22S+58%C2%B000'10.0%22W" target="_blank" class="btn-como-llegar">
+                    Cómo Llegar
+                </a>
 
-        <p><strong>Dirección:</strong> Calle 526 entre 132 y 133, N° 3755</p>
-
-        
-
-        <!-- Imagen de publicidad (superior) -->
-        
-    </div>
-</div>
-
+                <p><strong>Dirección:</strong> Calle 526 entre 132 y 133, N° 3755</p>
+            </div>
+        </div>
 
         <div id="vista-calendario" class="vista">
             <div class="modal-content">
@@ -123,9 +116,9 @@
                 
                 <!-- Sección para mostrar el costo adicional si es urgente -->
                 <p id="costoAdicional"></p> <!-- Aquí se mostrará el costo adicional -->
+                <button onclick="limpiarCalendario()">Limpiar</button>
             </div>
         </div>
-        
 
         <!-- Vista Cotización -->
         <div id="vista-cotizacion" class="vista">
@@ -147,10 +140,6 @@
                     <label for="cantidadBotonesOjales">Cantidad de botones/ojales:</label>
                     <input type="number" id="cantidadBotonesOjales" min="1" placeholder="Cantidad de botones/ojales">
                     <button type="button" id="generarCotizacion" onclick="generarCotizacion()">Generar Cotización</button>
-
-                
-                   
-
                 </form>
                 <p id="cotizacionResult"></p>
             </div>
@@ -177,148 +166,76 @@
                 </div>
 
                 <h3>Proceso de trabajo:</h3>
-<div class="video-gallery">
-    <div class="video-container">
-        <video controls>
-            <source src="img-videos/4.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
+                <div class="video-gallery">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="img-videos/4.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="img-videos/9.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="img-videos/10.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="img-videos/11.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="img-videos/12.mp4" type="video/mp4">
+                            Tu navegador no soporta el video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="video-container">
-        <video controls>
-            <source src="img-videos/9.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
-    <div class="video-container">
-        <video controls>
-            <source src="img-videos/10.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
-    <div class="video-container">
-        <video controls>
-            <source src="img-videos/11.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
-    <div class="video-container">
-        <video controls>
-            <source src="img-videos/12.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
-</div>
-<script>
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#ffffff"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                },
-                "polygon": {
-                    "nb_sides": 5
-                }
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": false,
-                "anim": {
-                    "enable": false,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": false,
-                    "speed": 40,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 6,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-            }
+
+    
+    <script>
+        tsParticles.load("tsparticles", {
+      "particles": {
+        "number": {
+          "value": 50,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
         },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "repulse"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 400,
-                    "line_linked": {
-                        "opacity": 1
-                    }
-                },
-                "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
-                },
-                "repulse": {
-                    "distance": 200,
-                    "duration": 0.4
-                },
-                "push": {
-                    "particles_nb": 4
-                },
-                "remove": {
-                    "particles_nb": 2
-                }
-            }
+        "size": {
+          "value": 3
         },
-        "retina_detect": true
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        },
+        "links": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        }
+      }
     });
-</script>
+   </script>
 
-<script src="particles-config.js"></script>
-<script src="script.js" defer></script>
-
+    <script src="script.js" defer></script>
 </body>
 </html>
