@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const particlesContainer = document.getElementById("tsparticles");
     if (particlesContainer) {
+        // tsParticles cargará y mostrará las partículas
         tsParticles.load("tsparticles", {
             background: {
                 color: {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Funciones globales para mostrar y cerrar vistas
     window.mostrarVista = function(id) {
         const vistas = document.querySelectorAll('.vista');
         vistas.forEach(vista => {
@@ -102,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('vista-principal').classList.add('vista-activa');
     };
 
+    // Lógica para la cotización
     const generarCotizacionBtn = document.getElementById('generarCotizacion');
     const cotizacionResult = document.getElementById('cotizacionResult');
     const cotizacionComprobante = document.getElementById('cotizacionComprobante');
@@ -183,6 +186,7 @@ COSTO TOTAL ESTIMADO: $${costoTotal.toFixed(2)}
         });
     }
 
+    // Lógica para el calendario de entregas
     window.calcularFechaEntrega = function() {
         const fechaRecepcionInput = document.getElementById('fechaRecepcion');
         const cantidadBotonesInput = document.getElementById('cantidadBotones');
@@ -220,8 +224,8 @@ COSTO TOTAL ESTIMADO: $${costoTotal.toFixed(2)}
 
         let costoAdicional = 0;
         if (entregaUrgente) {
-            costoAdicional = costoAdicional + 50;
-            diasNecesarios = Math.max(1, diasNecesarios * 0.5);
+            costoAdicional = costoAdicional + 50; 
+            diasNecesarios = Math.max(1, diasNecesarios * 0.5); 
         }
 
         let fechaEntrega = new Date(fechaRecepcion);
@@ -230,7 +234,7 @@ COSTO TOTAL ESTIMADO: $${costoTotal.toFixed(2)}
         while (diasAgregados < diasNecesarios) {
             fechaEntrega.setDate(fechaEntrega.getDate() + 1);
             const diaSemana = fechaEntrega.getDay();
-            if (diaSemana !== 0 && diaSemana !== 6) {
+            if (diaSemana !== 0 && diaSemana !== 6) { // Excluir domingos (0) y sábados (6)
                 diasAgregados++;
             }
         }
@@ -259,13 +263,15 @@ COSTO TOTAL ESTIMADO: $${costoTotal.toFixed(2)}
         document.getElementById('costoAdicional').style.backgroundColor = '';
     };
 
+    // Inicialización del mapa de Google
     window.initMap = function() {
         if (document.getElementById('map')) {
-            const tallerLocation = { lat: -34.8988, lng: -57.9734 };
+            // Coordenadas para Tolosa, Buenos Aires
+            const tallerLocation = { lat: -34.8988, lng: -57.9734 }; 
             const map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: tallerLocation,
-                disableDefaultUI: true
+                disableDefaultUI: true 
             });
 
             new google.maps.Marker({
@@ -273,12 +279,14 @@ COSTO TOTAL ESTIMADO: $${costoTotal.toFixed(2)}
                 map: map,
                 title: 'Nuestro Taller de Costura',
                 icon: {
-                    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" 
                 }
             });
         }
     };
 
+    // Esta verificación es redundante si `callback=initMap` ya se usa en el HTML, 
+    // pero es una buena práctica si initMap pudiera ser llamado de otra forma.
     if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
         initMap();
     }

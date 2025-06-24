@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicio Botón y Ojal | Taller de Costura</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
+    <link rel="stylesheet" href="style.css"> <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
+</head>
 <body>
     <div id="tsparticles"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.41.1/tsparticles.min.js"></script>
 
     <main class="container">
         <section id="vista-principal" class="vista vista-activa">
@@ -72,7 +73,7 @@
 
         <section id="vista-calendario" class="vista"> 
             <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('vista-calendario')"></span>
+                <span class="close" onclick="cerrarVentana('vista-calendario')">×</span>
                 <h2>Calculadora de Entregas</h2>
                 <label for="fechaRecepcion">Fecha de recepción:</label>
                 <input type="date" id="fechaRecepcion" required>
@@ -133,7 +134,6 @@
         </section>
     </main>
 
-    <script src="script.js" defer></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_Maps_API_KEY&callback=initMap"></script>
+    <script src="script.js" defer></script> <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_Maps_API_KEY&callback=initMap"></script>
 </body>
 </html>
