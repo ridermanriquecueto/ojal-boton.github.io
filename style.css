@@ -1,29 +1,26 @@
-/* Estilos generales */
 :root {
-    /* Nueva Paleta de Colores - Inspiración: Moderno, Profesional, con toques de energía */
-    --primary-color: #2F80ED;       /* Azul Vibrante */
-    --secondary-color: #27AE60;     /* Verde Esmeralda (Energía y Confianza) */
-    --accent-color: #E74C3C;        /* Rojo Coral Profundo (para alertas y atención) */
-    --dark-bg: #05223f;             /* Blanco Grisáceo Muy Claro (Fondo principal) */
-    --light-text: #34495E;          /* Gris Azulado Oscuro (Texto principal, alta legibilidad) */
-    --modal-bg: #FFFFFF;            /* Blanco Puro (Fondo de modales) */
-    --input-bg: #ECF0F1;            /* Gris Claro (Fondo de campos de entrada) */
-    --input-text: #34495E;          /* Gris Azulado Oscuro (Texto de campos de entrada) */
-    --button-back-bg: #BDC3C7;      /* Gris Medio Claro (Botones de volver/cancelar) */
-    --button-back-hover: #95A5A6;   /* Gris Medio Oscuro (Hover de botones de volver/cancelar) */
+    --primary-color: #2F80ED;
+    --secondary-color: #27AE60;
+    --accent-color: #E74C3C;
+    --dark-bg: #05223f;
+    --light-text: #ECF0F1;
+    --modal-bg: #FFFFFF;
+    --input-bg: #ECF0F1;
+    --input-text: #34495E;
+    --button-back-bg: #BDC3C7;
+    --button-back-hover: #95A5A6;
 }
 
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--dark-bg); /* Fondo principal claro */
-    color: var(--light-text); /* Texto oscuro para contraste */
+    background-color: var(--dark-bg);
+    color: var(--light-text);
     height: 100%;
-    overflow: hidden; /* Evita el scroll del body principal */
+    overflow: hidden;
 }
 
-/* Fondo dinámico con partículas */
 #tsparticles {
     position: fixed;
     width: 100%;
@@ -31,10 +28,9 @@ body, html {
     top: 0;
     left: 0;
     z-index: -1;
-    background-color: var(--dark-bg); /* Fondo base para las partículas */
+    background-color: var(--dark-bg);
 }
 
-/* Contenedor principal de la aplicación que alinea todo */
 .container {
     display: flex;
     justify-content: center;
@@ -47,7 +43,6 @@ body, html {
     position: relative;
 }
 
-/* Vistas modales (Ventanas superpuestas y la principal) */
 .vista {
     display: none;
     position: fixed;
@@ -55,8 +50,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Fondo semi-transparente para el modal: un gris muy sutil para que no sea blanco puro sobre blanco puro */
-    background-color: rgba(0, 0, 0, 0.2); /* Un velo más sutil */
+    background-color: rgba(0, 0, 0, 0.4);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -74,13 +68,11 @@ body, html {
     visibility: visible;
 }
 
-/* Contenedor de la vista principal */
 #vista-principal {
-    /* Fondo para la sección principal: un blanco puro sobre el fondo gris claro */
-    background: var(--modal-bg); /* Usamos el color de modal-bg para un fondo limpio */
+    background: var(--modal-bg);
     border-radius: 12px;
     padding: 30px 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave para el diseño claro */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     position: relative;
     flex-direction: column;
@@ -88,16 +80,15 @@ body, html {
     text-align: center;
 }
 
-/* Modal Content para todas las vistas */
 .modal-content {
-    background-color: var(--modal-bg); /* Blanco Puro */
+    background-color: var(--modal-bg);
     padding: 30px;
     border-radius: 12px;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     position: relative;
-    color: var(--light-text);
+    color: var(--input-text);
     animation: fadeInScale 0.3s ease-out forwards;
     overflow-y: auto;
     max-height: 90vh;
@@ -107,7 +98,6 @@ body, html {
     align-items: center;
     text-align: center;
 }
-
 
 @keyframes fadeInScale {
     from {
@@ -120,29 +110,132 @@ body, html {
     }
 }
 
-/* Botón de cerrar (X) */
 .close {
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 2.2rem;
-    color: var(--light-text); /* Color de texto oscuro para contraste */
+    color: var(--input-text);
     cursor: pointer;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .close:hover {
-    color: var(--accent-color); /* Rojo Coral Profundo */
+    color: var(--accent-color);
     transform: rotate(90deg);
 }
 
-/* Estilos de formularios y entradas */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--modal-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+
+.logo-qr-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+}
+
+.qr-code {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    border: 1px solid var(--button-back-bg);
+    border-radius: 5px;
+}
+
+.phone-display {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--input-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.phone-display i {
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+}
+
+.phone-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+    color: #2196F3;
+    text-decoration: underline;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.main-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main-button:hover {
+    background-color: #2196F3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
 h2 {
-    color: var(--primary-color); /* Azul Vibrante */
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: 25px;
     font-size: 1.8rem;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Línea divisoria más clara */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -152,7 +245,7 @@ label {
     display: block;
     margin-bottom: 8px;
     font-size: 1rem;
-    color: var(--light-text); /* Texto oscuro */
+    color: var(--input-text);
     font-weight: 500;
 }
 
@@ -163,48 +256,22 @@ select {
     padding: 12px;
     margin-bottom: 20px;
     font-size: 1rem;
-    background-color: var(--input-bg); /* Gris Claro */
-    border: 1px solid var(--primary-color); /* Borde con Azul Vibrante */
-    color: var(--input-text); /* Gris Azulado Oscuro */
+    background-color: var(--input-bg);
+    border: 1px solid var(--primary-color);
+    color: var(--input-text);
     border-radius: 6px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
 }
 
 input:focus, select:focus {
-    border-color: var(--secondary-color); /* Verde Esmeralda */
-    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.3); /* Sombra de enfoque (Verde Esmeralda) */
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.3);
     outline: none;
 }
 
-/* Estilo para los botones principales */
-.main-button {
-    background-color: var(--primary-color); /* Azul Vibrante */
-    color: white; /* Mantener texto blanco para buen contraste */
-    padding: 15px 25px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px; /* Añadido para espaciar los botones principales */
-}
-
-.main-button:hover {
-    background-color: #2196F3; /* Tono un poco más claro de Azul Vibrante */
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilo para los botones dentro de modales (cotización, calendario, etc.) */
-.modal-content button[type="button"]:not(.close):not(.back-button) { /* Apuntamos a los botones de acción específicos */
-    background-color: var(--primary-color); /* Azul Vibrante */
+.modal-content button[type="button"]:not(.close):not(.back-button) {
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 20px;
     border: none;
@@ -218,14 +285,13 @@ input:focus, select:focus {
 }
 
 .modal-content button[type="button"]:not(.close):not(.back-button):hover {
-    background-color: #2196F3; /* Tono un poco más claro */
+    background-color: #2196F3;
     transform: translateY(-2px);
 }
 
-/* Nuevo estilo para el botón "Volver" */
 .back-button {
-    background-color: var(--button-back-bg); /* Gris Medio Claro */
-    color: var(--light-text); /* Texto oscuro para contraste */
+    background-color: var(--button-back-bg);
+    color: var(--input-text);
     padding: 12px 20px;
     border: none;
     border-radius: 6px;
@@ -234,16 +300,14 @@ input:focus, select:focus {
     width: 100%;
     margin-top: 15px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .back-button:hover {
-    background-color: var(--button-back-hover); /* Gris Medio Oscuro */
+    background-color: var(--button-back-hover);
     transform: translateY(-2px);
 }
 
-
-/* Mensajes de resultado (Cotización, Calendario) */
 .result-message {
     margin-top: 20px;
     padding: 15px;
@@ -255,35 +319,32 @@ input:focus, select:focus {
     box-sizing: border-box;
 }
 
-/* Usamos colores directos o variables según sea más práctico para el fondo translúcido */
-.result-message[style*="var(--secondary-color)"] { /* Para mensajes de éxito (Verde Esmeralda) */
-    background-color: rgba(39, 174, 96, 0.15); /* Verde Esmeralda semitransparente */
+.result-message[style*="var(--secondary-color)"] {
+    background-color: rgba(39, 174, 96, 0.15);
     color: var(--secondary-color);
 }
 
-.result-message[style*="var(--accent-color)"] { /* Para mensajes de error (Rojo Coral Profundo) */
-    background-color: rgba(231, 76, 60, 0.15); /* Rojo Coral Profundo semitransparente */
+.result-message[style*="var(--accent-color)"] {
+    background-color: rgba(231, 76, 60, 0.15);
     color: var(--accent-color);
 }
 
-/* Comprobante de cotización */
-#cotizacionComprobante { /* Cambiado de cotizacionResult que es el mensaje de éxito/error */
+#cotizacionComprobante {
     margin-top: 20px;
     padding: 15px;
-    background-color: var(--input-bg); /* Gris Claro */
-    color: var(--input-text); /* Gris Azulado Oscuro */
+    background-color: var(--input-bg);
+    color: var(--input-text);
     border-radius: 8px;
     font-family: monospace;
     white-space: pre-wrap;
     font-size: 0.95rem;
-    border: 1px dashed rgba(0, 0, 0, 0.15); /* Borde punteado más claro y sutil */
+    border: 1px dashed rgba(0, 0, 0, 0.15);
     display: none;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
 }
 
-/* Estilos específicos de Ubicación */
 #vista-ubicacion h2 {
     color: var(--primary-color);
 }
@@ -292,7 +353,7 @@ input:focus, select:focus {
     font-style: italic;
     margin-bottom: 15px;
     font-size: 0.95rem;
-    color: var(--light-text); /* Texto oscuro */
+    color: var(--input-text);
     opacity: 0.9;
 }
 
@@ -301,7 +362,7 @@ input:focus, select:focus {
     align-items: center;
     gap: 8px;
     padding: 12px 25px;
-    background-color: var(--secondary-color); /* Verde Esmeralda */
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 6px;
@@ -315,12 +376,12 @@ input:focus, select:focus {
 }
 
 .btn-como-llegar:hover {
-    background-color: #2ECC71; /* Tono más claro de Verde Esmeralda */
+    background-color: #2ECC71;
     transform: translateY(-2px);
 }
 
 #vista-ubicacion p strong {
-    color: var(--primary-color); /* Usamos el azul primario aquí, más coherente con el mapa */
+    color: var(--primary-color);
 }
 
 #map {
@@ -332,14 +393,13 @@ input:focus, select:focus {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos específicos de WhatsApp */
 .whatsapp-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     padding: 15px 30px;
-    background-color: #25D366; /* Mantener el verde de WhatsApp para reconocimiento */
+    background-color: #25D366;
     color: white;
     border-radius: 8px;
     text-decoration: none;
@@ -354,134 +414,74 @@ input:focus, select:focus {
     background-color: #1DA851;
     transform: translateY(-3px);
 }
-/* ... (tu CSS existente, incluyendo la nueva paleta de colores) ... */
 
-/* Estilos para el número de teléfono visible */
-.phone-display {
-    margin-top: 25px; /* Espacio por encima */
-    margin-bottom: 25px; /* Espacio por debajo antes de los botones */
-    font-size: 1.2rem;
-    font-weight: 600; /* Un poco más de negrita */
-    color: var(--light-text); /* Color de texto principal */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Permite que el texto se ajuste en pantallas pequeñas */
-    gap: 8px; /* Espacio entre el ícono, texto y número */
-    text-align: center; /* Centrar el contenido */
-    padding: 10px 15px;
-    background-color: var(--input-bg); /* Un fondo suave para que destaque */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+@media (max-width: 768px) {
+    .text-container {
+        padding: 15px;
+    }
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    input[type="number"], input[type="date"], select, .modal-content button[type="button"]:not(.close):not(.back-button), .back-button {
+        font-size: 0.95rem;
+    }
+    #cotizacionComprobante {
+        font-size: 0.95rem;
+    }
+    .main-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
 }
-
-.phone-display i {
-    color: var(--secondary-color); /* Color del icono del teléfono (verde esmeralda) */
-    font-size: 1.4rem;
-}
-
-.phone-link {
-    color: var(--primary-color); /* Color del número de teléfono (azul vibrante) */
-    text-decoration: none; /* Quitar el subrayado predeterminado del enlace */
-    font-weight: bold; /* Hacer el número más negrita aún */
-    transition: color 0.2s ease;
-}
-
-.phone-link:hover {
-    color: #2196F3; /* Tono más claro del azul primario al pasar el ratón */
-    text-decoration: underline; /* Subrayado al pasar el ratón para indicar que es clicable */
-}
-
-/* ... (el resto de tus media queries, asegúrate de que el tamaño de fuente se ajuste para .phone-display) ... */
 
 @media (max-width: 480px) {
-    /* ... tus estilos existentes ... */
+    .logo-qr-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo,
+    .qr-code {
+        width: 100px;
+        height: 100px;
+    }
+
     .phone-display {
-        font-size: 1.05rem; /* Ajustar el tamaño de fuente para pantallas pequeñas */
+        font-size: 1.05rem;
         padding: 8px 10px;
     }
     .phone-display i {
         font-size: 1.2rem;
     }
-}
-
-/* Media Queries para Responsividad (sin cambios aquí) */
-@media (max-width: 768px) {
-    .service-title {
-        font-size: 2.2rem;
-    }
-
-    .highlighted-description {
-        font-size: 1rem;
-    }
-
-    .main-button {
-        padding: 12px 20px;
-        font-size: 1rem;
-    }
-
-    .modal-content {
-        width: 95%;
-        padding: 20px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    input[type="number"], input[type="date"], select, .modal-content button[type="button"]:not(.close):not(.back-button), .back-button {
-        font-size: 0.95rem;
-    }
-
-    #cotizacionComprobante {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .service-title {
-        font-size: 1.8rem;
-    }
-
-    .highlighted-description {
-        font-size: 0.9rem;
-    }
-
-    .confidence-text {
-        font-size: 0.85rem;
-    }
-
-    .main-button {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-        gap: 8px;
-    }
-
-    .modal-content {
+    #vista-principal, .modal-content {
         padding: 15px;
     }
-
     h2 {
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
-
     label {
         font-size: 0.9rem;
     }
-
     input[type="number"], input[type="date"], select, .modal-content button[type="button"]:not(.close):not(.back-button), .back-button {
         padding: 10px;
         font-size: 0.9rem;
         margin-bottom: 15px;
     }
-
     .close {
         font-size: 2rem;
     }
-
     .result-message, #cotizacionComprobante {
         font-size: 0.9rem;
         padding: 10px;
+    }
+    .main-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        gap: 8px;
     }
 }

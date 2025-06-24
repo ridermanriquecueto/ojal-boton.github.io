@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@latest/tsparticles.engine.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/basic@latest/tsparticles.basic.min.js"></script>
-</head>
+    </head>
 <body>
     <div id="tsparticles"></div>
 
@@ -17,9 +15,10 @@
         <section id="vista-principal" class="vista vista-activa">
             <div class="app-container">
                 <header class="text-container">
-                    <h1 class="service-title">Servicio Botón y Ojal</h1>
-                    <p class="highlighted-description">Nos especializamos en la colocación de botones y ojales para **todo tipo de prendas**.</p>
-                    <p class="confidence-text">Vení con confianza, somos un taller responsable con años de experiencia.</p>
+                    <div class="logo-qr-container">
+                        <img src="assets/images/logo_boton.png" alt="Logo Taller Botón y Ojal" class="logo">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://ridermanriquecueto.github.io/ojal-boton.github.io/" alt="Código QR Taller Botón y Ojal" class="qr-code">
+                    </div>
                     <p class="phone-display">
                         <i class="fas fa-phone-alt"></i> Para consultas y pedidos, llámanos al: 
                         <a href="tel:+542216769436" class="phone-link">+54 221 676 9436</a>
@@ -35,7 +34,6 @@
                     <button class="main-button" onclick="mostrarVista('vista-ubicacion')">
                         <i class="fas fa-map-marker-alt"></i> Ubicación
                     </button>
-                   
                     <button class="main-button" onclick="mostrarVista('vista-whatsapp')">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </button>
@@ -72,9 +70,9 @@
             </div>
         </section>
 
-        <section id="vista-calendario" class="vista">
+        <section id="vista-calendario" class="vista"> 
             <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('vista-calendario')">×</span>
+                <span class="close" onclick="cerrarVentana('vista-calendario')"></span>
                 <h2>Calculadora de Entregas</h2>
                 <label for="fechaRecepcion">Fecha de recepción:</label>
                 <input type="date" id="fechaRecepcion" required>
@@ -135,7 +133,7 @@
         </section>
     </main>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_Maps_API_KEY&callback=initMap"></script>
     <script src="script.js" defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_Maps_API_KEY&callback=initMap"></script>
 </body>
 </html>
