@@ -3,239 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicio Botón y Ojal</title>
+    <title>Servicio Botón y Ojal | Taller de Costura</title>
     <link rel="stylesheet" href="style.css">
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
-
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25694.png">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Script para tsparticles desde CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.34.0/tsparticles.min.js"></script>
-
-    <!-- Usando el CDN para particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@latest/tsparticles.engine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/basic@latest/tsparticles.basic.min.js"></script>
 </head>
-
 <body>
-    <!-- Fondo dinámico con partículas -->
-    <div id="particles-js"></div>
+    <div id="tsparticles"></div>
 
-    <div class="container">
-        <div id="vista-principal" class="vista-activa">
+    <main class="container">
+        <section id="vista-principal" class="vista vista-activa">
             <div class="app-container">
-                <div class="text-container">
+                <header class="text-container">
                     <h1 class="service-title">Servicio Botón y Ojal</h1>
-                    <p class="highlighted-description">Nos especializamos en colocar botones y ojales de todo tipo de prendas.</p>
-                    <p class="confidence-text">Vení con confianza, taller responsable.</p>
-                </div>
-                <div class="button-container">
-                    <button class="phone-button" onclick="mostrarVista('cotizacion')">
+                    <p class="highlighted-description">Nos especializamos en la colocación de botones y ojales para **todo tipo de prendas**.</p>
+                    <p class="confidence-text">Vení con confianza, somos un taller responsable con años de experiencia.</p>
+                    <p class="phone-display">
+                        <i class="fas fa-phone-alt"></i> Para consultas y pedidos, llámanos al: 
+                        <a href="tel:+542216769436" class="phone-link">+54 221 676 9436</a>
+                    </p>
+                </header>
+                <nav class="button-container">
+                    <button class="main-button" onclick="mostrarVista('vista-cotizacion')">
                         <i class="fas fa-calculator"></i> Cotización
                     </button>
-                    <button class="phone-button" onclick="mostrarVista('calendario')">
+                    <button class="main-button" onclick="mostrarVista('vista-calendario')">
                         <i class="fas fa-calendar-alt"></i> Calendario
                     </button>
-                    <button class="phone-button" onclick="mostrarVista('ubicacion')">
+                    <button class="main-button" onclick="mostrarVista('vista-ubicacion')">
                         <i class="fas fa-map-marker-alt"></i> Ubicación
                     </button>
-                    <button class="phone-button" onclick="mostrarVista('whatsapp')">
+                   
+                    <button class="main-button" onclick="mostrarVista('vista-whatsapp')">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </button>
-                    <button class="phone-button" onclick="mostrarVista('mas')">
-                        <i class="fas fa-ellipsis-h"></i> Más
-                    </button>
-                </div>
+                </nav>
             </div>
-        </div>
+        </section>
 
-        <!-- Vista WhatsApp -->
-        <div id="vista-whatsapp" class="vista">
+        <section id="vista-cotizacion" class="vista">
             <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('whatsapp')">&times;</span>
-                <h2>Hablame por WhatsApp</h2>
-                <p>Haz clic en el siguiente enlace para enviar un mensaje:</p>
-                <a href="https://wa.me/542216769436" target="_blank">
-                    <button class="phone-button">
-                        <i class="fab fa-whatsapp"></i> Iniciar Chat
-                    </button>
-                </a>
-            </div>
-        </div>
-
-        <!-- Vista Ubicación -->
-        <div id="vista-ubicacion" class="vista">
-            <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('ubicacion')">&times;</span>
-                <h2>Ubicación</h2>
-
-                <!-- Frases motivadoras para incentivar a la gente -->
-                <p class="frase-motivadora">
-                    ¿Necesitás un botón o un ojal? ¡No busques más! Vení a nuestro taller que lo hacemos con dedicación y rapidez.
-                </p>
-                <p class="frase-motivadora">
-                    ¡Trae tus prendas y las dejamos como nuevas! Camisas, pantalones, jeans... ¡Lo que necesites, lo tenemos!
-                </p>
-                <p class="frase-motivadora">
-                    ¡Con café y buena onda, te atendemos siempre con una sonrisa! No te lo podés perder. 😊
-                </p>
-                <p class="frase-motivadora">
-                    Rápido, responsable y con la mejor calidad. ¡Te esperamos para darle un toque único a tus prendas!
-                </p>
-
-                <!-- Botón "Cómo Llegar" -->
-                <a href="https://www.google.com/maps/place/34%C2%B055'12.0%22S+58%C2%B000'10.0%22W" target="_blank" class="btn-como-llegar">
-                    Cómo Llegar
-                </a>
-
-                <p><strong>Dirección:</strong> Calle 526 entre 132 y 133, N° 3755</p>
-            </div>
-        </div>
-
-        <div id="vista-calendario" class="vista">
-            <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('calendario')">&times;</span>
-                <h2>Calendario de Entregas</h2>
-                
-                <label for="fechaRecepcion">Fecha de recepción:</label>
-                <input type="date" id="fechaRecepcion">
-                
-                <label for="cantidadPrendas">Cantidad de prendas:</label>
-                <input type="number" id="cantidadPrendas" min="1" placeholder="Ingrese cantidad de prendas">
-                
-                <label for="cantidadBotones">Cantidad total de botones y ojales:</label>
-                <input type="number" id="cantidadBotones" min="1" placeholder="Ingrese cantidad de botones y ojales">
-                
-                <label for="entregaUrgente">¿Entrega urgente?</label>
-                <input type="checkbox" id="entregaUrgente">
-                
-                <button onclick="calcularFechaEntrega()">Calcular fecha de entrega</button>
-                
-                <p id="fechaEntrega"></p>
-                
-                <!-- Sección para mostrar el costo adicional si es urgente -->
-                <p id="costoAdicional"></p> <!-- Aquí se mostrará el costo adicional -->
-                <button onclick="limpiarCalendario()">Limpiar</button>
-            </div>
-        </div>
-
-        <!-- Vista Cotización -->
-        <div id="vista-cotizacion" class="vista">
-            <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('cotizacion')">&times;</span>
+                <span class="close" onclick="cerrarVentana('vista-cotizacion')">×</span>
                 <h2>Solicitar Cotización</h2>
                 <form id="form-cotizacion">
                     <label for="cantidadCotizacion">Cantidad de prendas:</label>
-                    <input type="number" id="cantidadCotizacion" min="1" placeholder="Cantidad de prendas">
+                    <input type="number" id="cantidadCotizacion" min="1" placeholder="Ej: 100" required>
+
                     <label for="tipoTrabajo">Tipo de trabajo:</label>
                     <select id="tipoTrabajo">
-                        <option value="ambos-comun">Ambos (botón-ojal común)</option>
-                        <option value="ambos-especial">Ambos (botón-ojal especial)</option>
-                        <option value="boton-especial">Botón especial</option>
-                        <option value="ojal-especial">Ojal especial</option>
-                        <option value="boton-comun">Botón común</option>
-                        <option value="ojal-comun">Ojal común</option>
+                        <option value="ambos-comun">Botón y Ojal Común</option>
+                        <option value="ambos-especial">Botón y Ojal Especial</option>
+                        <option value="boton-comun">Solo Botón Común</option>
+                        <option value="ojal-comun">Solo Ojal Común</option>
+                        <option value="boton-especial">Solo Botón Especial</option>
+                        <option value="ojal-especial">Solo Ojal Especial</option>
                     </select>
-                    <label for="cantidadBotonesOjales">Cantidad de botones/ojales:</label>
-                    <input type="number" id="cantidadBotonesOjales" min="1" placeholder="Cantidad de botones/ojales">
-                    <button type="button" id="generarCotizacion" onclick="generarCotizacion()">Generar Cotización</button>
+
+                    <label for="cantidadBotonesOjales">Cantidad de botones/ojales por prenda:</label>
+                    <input type="number" id="cantidadBotonesOjales" min="1" placeholder="Ej: 5 (por prenda)" required>
+
+                    <button type="button" id="generarCotizacion">Generar Cotización</button>
                 </form>
-                <p id="cotizacionResult"></p>
+                <div id="cotizacionResult"></div>
+                <pre id="cotizacionComprobante" class="comprobante-display"></pre>
+                <button class="back-button" onclick="mostrarVista('vista-principal')"><i class="fas fa-arrow-left"></i> Volver</button>
             </div>
-        </div>
+        </section>
 
-        <!-- Vista Más -->
-        <div id="vista-mas" class="vista">
+        <section id="vista-calendario" class="vista">
             <div class="modal-content">
-                <span class="close" onclick="cerrarVentana('mas')">&times;</span>
-                <h2>Más sobre nuestro trabajo</h2>
-                
-                <h3>Fotos de trabajo:</h3>
-                <div class="image-gallery">
-                    <img src="img\celus.png" alt="Foto 1" class="gallery-image">
-                    <img src="img\costo.png" alt="Foto 2" class="gallery-image">
-                    <img src="img\superior.png" alt="Foto 3" class="gallery-image">
-                    <img src="img/1.jpg" alt="Foto 1" class="gallery-image">
-                    <img src="img/2.jpg" alt="Foto 2" class="gallery-image">
-                    <img src="img/3.jpg" alt="Foto 3" class="gallery-image">
-                    <img src="img/4.jpg" alt="Foto 4" class="gallery-image">
-                    <img src="img/6.jpg" alt="Foto 6" class="gallery-image">
-                    <img src="img/7.jpg" alt="Foto 7" class="gallery-image">
-                    <img src="img/8.jpg" alt="Foto 8" class="gallery-image">
-                </div>
+                <span class="close" onclick="cerrarVentana('vista-calendario')">×</span>
+                <h2>Calculadora de Entregas</h2>
+                <label for="fechaRecepcion">Fecha de recepción:</label>
+                <input type="date" id="fechaRecepcion" required>
 
-                <h3>Proceso de trabajo:</h3>
-                <div class="video-gallery">
-                    <div class="video-container">
-                        <video controls>
-                            <source src="img-videos/4.mp4" type="video/mp4">
-                            Tu navegador no soporta el video.
-                        </video>
-                    </div>
-                    <div class="video-container">
-                        <video controls>
-                            <source src="img-videos/9.mp4" type="video/mp4">
-                            Tu navegador no soporta el video.
-                        </video>
-                    </div>
-                    <div class="video-container">
-                        <video controls>
-                            <source src="img-videos/10.mp4" type="video/mp4">
-                            Tu navegador no soporta el video.
-                        </video>
-                    </div>
-                    <div class="video-container">
-                        <video controls>
-                            <source src="img-videos/11.mp4" type="video/mp4">
-                            Tu navegador no soporta el video.
-                        </video>
-                    </div>
-                    <div class="video-container">
-                        <video controls>
-                            <source src="img-videos/12.mp4" type="video/mp4">
-                            Tu navegador no soporta el video.
-                        </video>
-                    </div>
-                </div>
+                <label for="cantidadBotones">Cantidad total de botones y ojales:</label>
+                <input type="number" id="cantidadBotones" min="1" placeholder="Ej: 500" required>
+
+                <label for="entregaUrgente">
+                    <input type="checkbox" id="entregaUrgente">
+                    Entrega urgente (50% costo adicional)
+                </label>
+
+                <button type="button" onclick="calcularFechaEntrega()">Calcular Fecha</button>
+
+                <p id="fechaEntrega" class="result-message"></p>
+                <p id="costoAdicional" class="result-message"></p>
+
+                <button type="button" onclick="limpiarCalendario()">Limpiar</button>
+                <button class="back-button" onclick="mostrarVista('vista-principal')"><i class="fas fa-arrow-left"></i> Volver</button>
             </div>
-        </div>
-    </div>
+        </section>
 
-    
-    <script>
-        tsParticles.load("tsparticles", {
-      "particles": {
-        "number": {
-          "value": 50,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "size": {
-          "value": 3
-        },
-        "move": {
-          "enable": true,
-          "speed": 1,
-          "direction": "none",
-          "random": true,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        },
-        "links": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        }
-      }
-    });
-   </script>
+        <section id="vista-ubicacion" class="vista">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarVentana('vista-ubicacion')">×</span>
+                <h2>Ubicación de Nuestro Taller</h2>
+                <p class="moto-text">
+                    ¿Necesitás un botón o un ojal? ¡No busques más! Vení a nuestro taller que lo hacemos con dedicación y rapidez.
+                </p>
+                <p class="moto-text">
+                    ¡Trae tus prendas y las dejamos como nuevas! Camisas, pantalones, jeans... ¡Lo que necesites, lo tenemos!
+                </p>
+                <p class="moto-text">
+                    ¡Con café y buena onda, te atendemos siempre con una sonrisa! No te lo podés perder. 😊
+                </p>
+                <p class="moto-text">
+                    Rápido, responsable y con la mejor calidad. ¡Te esperamos para darle un toque único a tus prendas!
+                </p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=-34.9215,-57.9545&dir_action=navigate" target="_blank" class="btn-como-llegar">
+                    <i class="fas fa-directions"></i> Cómo Llegar
+                </a>
+                <p><strong>Dirección:</strong> Calle 526 entre 132 y 133, N° 3755, Tolosa, Buenos Aires.</p>
+                <div id="map" style="height: 300px; width: 100%; border-radius: 8px; margin-top: 20px;"></div>
+                <button class="back-button" onclick="mostrarVista('vista-principal')"><i class="fas fa-arrow-left"></i> Volver</button>
+            </div>
+        </section>
 
+        <section id="vista-whatsapp" class="vista">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarVentana('vista-whatsapp')">×</span>
+                <h2>Hablános por WhatsApp</h2>
+                <p>¡Envianos un mensaje directo y respondemos tus consultas!</p>
+                <a href="https://wa.me/542216769436" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> Iniciar Chat
+                </a>
+                <button class="back-button" onclick="mostrarVista('vista-principal')"><i class="fas fa-arrow-left"></i> Volver</button>
+            </div>
+        </section>
+    </main>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_Maps_API_KEY&callback=initMap"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
